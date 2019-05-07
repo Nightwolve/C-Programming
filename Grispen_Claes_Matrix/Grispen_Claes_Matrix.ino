@@ -1,3 +1,9 @@
+/*
+* Auteur 1: Claes Ferre
+* Auteur 2: Grispen Bart
+* Link naar github repository:
+*/
+
 int IMAGE[8][8]={{0,0,0,0,0,0,0,0},
                  {0,0,0,0,0,0,0,0},
                  {0,0,0,0,0,0,0,0},
