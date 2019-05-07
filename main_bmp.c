@@ -1,12 +1,13 @@
 /*  program: bmpconverter
- *  ver: 2.0
- *  date: 11/5/2018
- *
- *  sources used:
- *  https://stackoverflow.com/questions/4346598/gets-function-in-c -->fgets for filename
- *
- *
- */
+/*
+* Auteur 1:  Claes Ferre
+* Auteur 2: Grispen Bart
+* Link naar github repository: https://github.com/Nightwolve/C-Programming/blob/master/main_bmp.c
+*  sources used:
+*  https://stackoverflow.com/questions/4346598/gets-function-in-c -->fgets for filename
+*
+*
+*/
 
 #include <stdio.h>
 #include <stdlib.h> //dynamic mem
