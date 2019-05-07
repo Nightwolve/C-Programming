@@ -1,7 +1,7 @@
 /*
 * Auteur 1: Claes Ferre
 * Auteur 2: Grispen Bart
-* Link naar github repository:
+* Link naar github repository: https://github.com/Nightwolve/C-Programming/tree/master/Grispen_Claes_Matrix
 */
 
 int IMAGE[8][8]={{0,0,0,0,0,0,0,0},
