@@ -1,4 +1,3 @@
-//Arne Niesten - 1PBEAI B//
 #include <stdio.h>
 #include <stdlib.h>
 
