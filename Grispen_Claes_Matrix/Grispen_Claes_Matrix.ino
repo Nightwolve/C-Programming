@@ -8,7 +8,6 @@
 const int shiftClockPin = 3;  //SH
 const int latchClockPin = 4;  //ST
 const int serialInputPin = 9; //DS
-//const int button = 2; //Button
 
 int button_push_counter = 0;   // counter for the number of button presses
 int button_state = 0;         // current state of the button
@@ -51,7 +50,7 @@ word smiley2  = 0xB615;
 word smiley3  = 0x4076;
 word smiley4  = 0x4E92;
 
-word smiley5  = 0b1101000100001010;
+word smiley5  = 0b1101000100001010; //yes, we can also do it in binary
 word smiley6  = 0b1011011000010101;
 word smiley7  = 0b0100001001110010;
 word smiley8  = 0b0100110010010110;
@@ -63,7 +62,7 @@ boolean shiftLeftRight = false;
 void ISR_ButtonPressed(void)
 {
   currentMillis = millis();
-  if(currentMillis - previousMillis > 400);
+  if (currentMillis - previousMillis > 400);
   {
     button_push_counter++;
   }
@@ -76,22 +75,12 @@ void setup() {
   pinMode(latchClockPin, OUTPUT);
   pinMode(serialInputPin, OUTPUT);
   pinMode(2, INPUT);
-  attachInterrupt(digitalPinToInterrupt(2), ISR_ButtonPressed, FALLING);
-  //pinMode(button, INPUT);
+  attachInterrupt(digitalPinToInterrupt(2), ISR_ButtonPressed, FALLING); //creating interrupt for the button connected to pin 2
   Serial.begin(9600);
 }
 
 void loop()
 {
-  /*button_state = digitalRead(button); //reading from button switch
-
-  if (button_state == LOW && button_state != last_button_state) //only reading button once per push
-  {
-    button_push_counter++;
-  }
-  else {}
-  last_button_state = button_state;*/
-
   switch (button_push_counter) //creating a switch so you get a character after every button press
   {
     case 0: //show the character B on the matrix
@@ -167,10 +156,11 @@ void loop()
       break;
 
     case 12:
-      displayData(leeg);
+      blanco();
       Serial.print(button_push_counter);
       Serial.print('\n');
-
+      break;
+      
     case 13:
       button_push_counter = 0;
       break;
@@ -201,7 +191,6 @@ void letterA()
   displayData(a1);
   displayData(a2);
   displayData(a3);
-  delay(1);
 }
 
 void letterR()
@@ -210,14 +199,12 @@ void letterR()
   displayData(r2);
   displayData(r3);
   displayData(r4);
-  delay(1);
 }
 
 void letterT()
 {
   displayData(t1);
   displayData(t2);
-  delay(1);
 }
 
 void ampersant()
@@ -227,7 +214,6 @@ void ampersant()
   displayData(en3);
   displayData(en4);
   displayData(en5);
-  delay(1);
 }
 
 void letterF()
@@ -235,7 +221,6 @@ void letterF()
   displayData(f1);
   displayData(f2);
   displayData(f3);
-  delay(1);
 }
 
 void letterE()
@@ -243,7 +228,6 @@ void letterE()
   displayData(e1);
   displayData(e2);
   displayData(e3);
-  delay(1);
 }
 
 void smiley()
@@ -254,18 +238,16 @@ void smiley()
     displayData(smiley2);
     displayData(smiley3);
     displayData(smiley4);
-    delay(1);
   }
-
   for (int i = 0; i < 500; i++)
   {
     displayData(smiley5);
     displayData(smiley6);
     displayData(smiley7);
     displayData(smiley8);
-    delay(1);
   }
 }
+
 void smileyFast()
 {
   for (int i = 0; i < 150; i++)
@@ -274,15 +256,16 @@ void smileyFast()
     displayData(smiley2);
     displayData(smiley3);
     displayData(smiley4);
-    delay(1);
   }
-
   for (int i = 0; i < 150; i++)
   {
     displayData(smiley5);
     displayData(smiley6);
     displayData(smiley7);
     displayData(smiley8);
-    delay(1);
   }
+}
+void blanco()
+{
+  displayData(leeg);
 }
