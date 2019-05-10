@@ -76,7 +76,7 @@ void setup() {
   pinMode(latchClockPin, OUTPUT);
   pinMode(serialInputPin, OUTPUT);
   pinMode(2, INPUT);
-  attachInterrupt(digitalPinToInterrupt(2), ISR_ButtonPressed, RISING);
+  attachInterrupt(digitalPinToInterrupt(2), ISR_ButtonPressed, FALLING);
   //pinMode(button, INPUT);
   Serial.begin(9600);
 }
@@ -248,7 +248,7 @@ void letterE()
 
 void smiley()
 {
-  for (int i = 0; i < 1000; i++)
+  for (int i = 0; i < 500; i++)
   {
     displayData(smiley1);
     displayData(smiley2);
@@ -257,17 +257,18 @@ void smiley()
     delay(1);
   }
 
-  for (int i = 0; i < 1000; i++)
+  for (int i = 0; i < 500; i++)
   {
     displayData(smiley5);
     displayData(smiley6);
     displayData(smiley7);
     displayData(smiley8);
+    delay(1);
   }
 }
 void smileyFast()
 {
-  for (int i = 0; i < 250; i++)
+  for (int i = 0; i < 150; i++)
   {
     displayData(smiley1);
     displayData(smiley2);
@@ -276,11 +277,12 @@ void smileyFast()
     delay(1);
   }
 
-  for (int i = 0; i < 250; i++)
+  for (int i = 0; i < 150; i++)
   {
     displayData(smiley5);
     displayData(smiley6);
     displayData(smiley7);
     displayData(smiley8);
+    delay(1);
   }
 }
