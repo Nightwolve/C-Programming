@@ -63,7 +63,7 @@ boolean shiftLeftRight = false;
 void ISR_ButtonPressed(void)
 {
   currentMillis = millis();
-  if(currentMillis - previousMillis > 200);
+  if(currentMillis - previousMillis > 400);
   {
     button_push_counter++;
   }
@@ -76,7 +76,7 @@ void setup() {
   pinMode(latchClockPin, OUTPUT);
   pinMode(serialInputPin, OUTPUT);
   pinMode(2, INPUT);
-  attachInterrupt(digitalPinToInterrupt(2), ISR_ButtonPressed, RISING);
+  attachInterrupt(digitalPinToInterrupt(2), ISR_ButtonPressed, FALLING);
   //pinMode(button, INPUT);
   Serial.begin(9600);
 }
