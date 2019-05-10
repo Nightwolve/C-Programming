@@ -63,7 +63,7 @@ boolean shiftLeftRight = false;
 void ISR_ButtonPressed(void)
 {
   currentMillis = millis();
-  if(currentMillis - previousMillis > 200);
+  if(currentMillis - previousMillis > 400);
   {
     button_push_counter++;
   }
