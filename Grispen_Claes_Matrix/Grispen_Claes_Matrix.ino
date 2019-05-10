@@ -8,11 +8,12 @@
 const int shiftClockPin = 3;  //SH
 const int latchClockPin = 4;  //ST
 const int serialInputPin = 9; //DS
-const int button = 2; //Button
+//const int button = 2; //Button
 
 int button_push_counter = 0;   // counter for the number of button presses
 int button_state = 0;         // current state of the button
 int last_button_state = 0;     // previous state of the button
+long currentMillis = 0, previousMillis = 0;
 
 //creating the characters withing the shift register
 word b1  = 0x8040;
@@ -59,25 +60,37 @@ word leeg  = 0xD616;
 
 boolean shiftLeftRight = false;
 
+void ISR_ButtonPressed(void)
+{
+  currentMillis = millis();
+  if(currentMillis - previousMillis > 200);
+  {
+    button_push_counter++;
+  }
+  previousMillis = currentMillis;
+}
+
 void setup() {
   //Setting the output pins
   pinMode(shiftClockPin, OUTPUT);
   pinMode(latchClockPin, OUTPUT);
   pinMode(serialInputPin, OUTPUT);
-  pinMode(button, INPUT);
+  pinMode(2, INPUT);
+  attachInterrupt(digitalPinToInterrupt(2), ISR_ButtonPressed, RISING);
+  //pinMode(button, INPUT);
   Serial.begin(9600);
 }
 
 void loop()
 {
-  button_state = digitalRead(button); //reading from button switch
+  /*button_state = digitalRead(button); //reading from button switch
 
   if (button_state == LOW && button_state != last_button_state) //only reading button once per push
   {
     button_push_counter++;
   }
   else {}
-  last_button_state = button_state;
+  last_button_state = button_state;*/
 
   switch (button_push_counter) //creating a switch so you get a character after every button press
   {
